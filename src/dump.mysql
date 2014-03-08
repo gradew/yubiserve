@@ -59,3 +59,17 @@ CREATE TABLE IF NOT EXISTS `yubikeys` (
   UNIQUE KEY `publicname` (`publicname`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
+--
+-- Table `yubikeys_audit`
+--
+
+CREATE TABLE IF NOT EXISTS `yubikeys_audit` (
+  `id` int(11) NOT NULL,
+  `publicname` varchar(16) NOT NULL,
+  `actiontimestamp` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `result` varchar(24),
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+

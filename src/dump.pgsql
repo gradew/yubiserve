@@ -46,3 +46,16 @@ CREATE TABLE IF NOT EXISTS yubikeys (
   time integer NOT NULL default '1'
 );
 
+-- --------------------------------------------------------
+
+--
+-- Table `yubikeys_audit`
+--
+
+CREATE TABLE IF NOT EXISTS yubikeys_audit (
+  id SERIAL PRIMARY KEY,
+  publicname varchar(16) NOT NULL,
+  actiontimestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  result varchar(24)
+);
+

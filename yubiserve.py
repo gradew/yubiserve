@@ -222,6 +222,11 @@ class YubiServeHandler (BaseHTTPServer.BaseHTTPRequestHandler):
                     getData = self.getToDict(query)
                     otpvalidation = OTPValidation(self.con)
                     validation = otpvalidation.validateOTP(getData['otp'])
+                    if config['yubiAudit'].lower() == 'yes':
+                        cur = self.con.cursor()
+                        validationstr = [k for k, v in otpvalidation.status.iteritems() if v == validation][0]
+                        cur.execute("INSERT INTO yubikeys_audit(publicname, result) VALUES('" + getData['otp'][:12] + "', '" + validationstr + "')")
+                        self.con.commit()
                     self.send_response(200)
                     self.send_header('Content-type', 'text/plain')
                     self.end_headers()

@@ -22,4 +22,10 @@ create table apikeys(
  secret varchar(28),
  id integer primary key
 );
+create table yubikeys_audit(
+ id integer primary key,
+ publicname varchar(12),
+ actiontimestamp timestamp default current_timestamp,
+ result varchar(24)
+);
 COMMIT;
