@@ -126,7 +126,7 @@ else:
             if (cur.rowcount == 0):
                 print 'Key not found.'
             else:
-                cur.execute("SELECT * FROM yubikeys WHERE nickname = '" + nickname + "' AND active = '1'")
+                cur.execute("SELECT * FROM yubikeys WHERE nickname = '" + nickname + "' AND active = '0'")
                 if (cur.rowcount == 1):
                     cur.execute("UPDATE yubikeys SET active = '1' WHERE nickname = '" + nickname + "'")
                     print "Key '" + nickname + "' enabled."
