@@ -59,8 +59,11 @@ to a directory, add the keys and launch the server (or, if you prefer
 you can launch the server before adding the keys, it doesn't matter).
 
 There's also an LSB script that you can use to daemonize the process.
-To use it, simply run:
-cp lsb-yubiserve /etc/init.d ; chmod +x /etc/init.d/yubiserve
+To use it, simply run::
+
+  cp lsb-yubiserve /etc/init.d/yubiserve ; chmod +x /etc/init.d/yubiserve
+  update-rc.d yubiserve defaults
+
 This script assumes that you've deployed the application to /opt/yubiserve.
 This can be changed at the beginning of the LSB script (DIR).
 
