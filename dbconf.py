@@ -113,7 +113,7 @@ else:
             else:
                 cur.execute("SELECT * FROM yubikeys WHERE nickname = '" + nickname + "' AND active = '1'")
                 if (cur.rowcount == 1):
-                    cur.execute("UPDATE yubikeys SET active = '1' WHERE nickname = '" + nickname + "'")
+                    cur.execute("UPDATE yubikeys SET active = '0' WHERE nickname = '" + nickname + "'")
                     print "Key '" + nickname + "' disabled."
                     con.commit()
                 else:
