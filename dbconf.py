@@ -181,7 +181,7 @@ else:
             else:
                 cur.execute("SELECT * FROM oathtokens WHERE nickname = '" + nickname + "' AND active = '1'")
                 if (cur.rowcount == 1):
-                    cur.execute("UPDATE oathtokens SET active = '1' WHERE nickname = '" + nickname + "'")
+                    cur.execute("UPDATE oathtokens SET active = '0' WHERE nickname = '" + nickname + "'")
                     print "Key '" + nickname + "' disabled."
                     con.commit()
                 else:
@@ -194,7 +194,7 @@ else:
             if (cur.rowcount == 0):
                 print 'Key not found.'
             else:
-                cur.execute("SELECT * FROM oathtokens WHERE nickname = '" + nickname + "' AND active = '1'")
+                cur.execute("SELECT * FROM oathtokens WHERE nickname = '" + nickname + "' AND active = '0'")
                 if (cur.rowcount == 1):
                     cur.execute("UPDATE oathtokens SET active = '1' WHERE nickname = '" + nickname + "'")
                     print "Key '" + nickname + "' enabled."
