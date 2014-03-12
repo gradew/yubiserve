@@ -23,8 +23,9 @@ CREATE TABLE IF NOT EXISTS apikeys (
 CREATE TABLE IF NOT EXISTS oathtokens (
   nickname varchar(64) NOT NULL UNIQUE,
   publicname varchar(12) NOT NULL UNIQUE,
-  created varchar(24) NOT NULL,
+  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   secret varchar(40) NOT NULL,
+  serno varchar(12),
   active smallint default '1',
   counter integer NOT NULL default '1'
 );
@@ -38,9 +39,10 @@ CREATE TABLE IF NOT EXISTS oathtokens (
 CREATE TABLE IF NOT EXISTS yubikeys (
   nickname varchar(64) NOT NULL UNIQUE,
   publicname varchar(16) NOT NULL UNIQUE,
-  created varchar(24) NOT NULL,
+  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   internalname varchar(12) NOT NULL,
   aeskey varchar(32) NOT NULL,
+  serno varchar(12),
   active smallint default '1',
   counter integer NOT NULL default '1',
   time integer NOT NULL default '1'

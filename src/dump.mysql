@@ -32,8 +32,9 @@ CREATE TABLE IF NOT EXISTS `apikeys` (
 CREATE TABLE IF NOT EXISTS `oathtokens` (
   `nickname` varchar(64) NOT NULL,
   `publicname` varchar(12) NOT NULL,
-  `created` varchar(24) NOT NULL,
+  `created` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `secret` varchar(40) NOT NULL,
+  `serno` varchar(12),
   `active` tinyint(1) default '1',
   `counter` int(11) NOT NULL default '1',
   UNIQUE KEY `nickname` (`nickname`),
@@ -49,9 +50,10 @@ CREATE TABLE IF NOT EXISTS `oathtokens` (
 CREATE TABLE IF NOT EXISTS `yubikeys` (
   `nickname` varchar(64) NOT NULL,
   `publicname` varchar(16) NOT NULL,
-  `created` varchar(24) NOT NULL,
+  `created` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `internalname` varchar(12) NOT NULL,
   `aeskey` varchar(32) NOT NULL,
+  `serno` varchar(12),
   `active` tinyint(1) default '1',
   `counter` int(11) NOT NULL default '1',
   `time` int(11) NOT NULL default '1',
