@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import time, random, re, os
-from sys import argv, exit
+from sys import argv, exit, exc_info
 
 try:
     import MySQLdb
@@ -83,7 +83,9 @@ try:
         con = psycopg2.connect("host='%s' dbname='%s' user='%s' password='%s'" % (host, db, user, passwd))
 
 except:
-    print "There's a problem with the database!\n"
+    print("There's a problem with the database : %s" % exc_info()[0])
+    exit(1)
+
 cur = con.cursor()
 
 if (len(argv)<2):
