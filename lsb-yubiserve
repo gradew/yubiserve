@@ -1,7 +1,7 @@
 #!/bin/sh
  
 ### BEGIN INIT INFO
-# Provides: myservice
+# Provides: yubiserve
 # Required-Start: $remote_fs $syslog
 # Required-Stop: $remote_fs $syslog
 # Default-Start: 2 3 4 5
@@ -16,7 +16,6 @@ DAEMON=$DIR/yubiserve.py
 DAEMON_NAME=yubiserve
  
 # This next line determines what user the script runs as.
-# Root generally not recommended but necessary if you are using the Raspberry Pi GPIO from Python.
 DAEMON_USER=root
  
 # The process ID of the script when it runs is stored here:
